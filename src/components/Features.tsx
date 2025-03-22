@@ -46,21 +46,25 @@ const Features = () => {
       icon: <Bot className="w-8 h-8" />,
       title: "AI Pet Assistant",
       description: "Get instant answers to pet care questions!",
+      number: "1️⃣"
     },
     {
       icon: <ShoppingBag className="w-8 h-8" />,
       title: "Multi-Vendor Marketplace",
       description: "Shop from multiple trusted pet brands in one place!",
+      number: "2️⃣"
     },
     {
       icon: <Truck className="w-8 h-8" />,
       title: "Smart Delivery",
       description: "Fast shipping powered by Shiprocket.",
+      number: "3️⃣"
     },
     {
       icon: <Users className="w-8 h-8" />,
       title: "Trusted by Pet Parents",
       description: "Real reviews from 1,000+ happy pet owners!",
+      number: "4️⃣"
     }
   ];
 
@@ -89,6 +93,7 @@ const Features = () => {
               className="feature-card animated-element"
               style={{ animationDelay: `${0.2 + index * 0.1}s` }}
             >
+              <div className="absolute top-2 right-2 text-sm opacity-60">{feature.number}</div>
               <div className="feature-icon-container">
                 {feature.icon}
               </div>

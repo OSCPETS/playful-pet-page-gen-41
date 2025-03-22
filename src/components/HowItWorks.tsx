@@ -49,22 +49,26 @@ const HowItWorks = () => {
     {
       icon: <Bot size={24} />,
       title: "Chat with OSCPETS AI",
-      description: "Ask pet care questions, get expert tips!"
+      description: "Ask pet care questions, get expert tips!",
+      number: "1️⃣"
     },
     {
       icon: <ShoppingCart size={24} />,
       title: "Explore & Shop Pet Products",
-      description: "Find everything from food to grooming supplies!"
+      description: "Find everything from food to grooming supplies!",
+      number: "2️⃣"
     },
     {
       icon: <Truck size={24} />,
       title: "Get Fast & Safe Delivery",
-      description: "Doorstep delivery for your pet's needs!"
+      description: "Doorstep delivery for your pet's needs!",
+      number: "3️⃣"
     },
     {
       icon: <Users size={24} />,
       title: "Join the Community",
-      description: "Exclusive WhatsApp group for pet parents!"
+      description: "Exclusive WhatsApp group for pet parents!",
+      number: "4️⃣"
     }
   ];
 
@@ -93,7 +97,8 @@ const HowItWorks = () => {
               style={{ animationDelay: `${0.2 + index * 0.15}s` }}
             >
               <div className="flex-shrink-0">
-                <div className="w-12 h-12 rounded-full bg-osc-blue text-white flex items-center justify-center">
+                <div className="w-12 h-12 rounded-full bg-osc-blue text-white flex items-center justify-center relative">
+                  <span className="absolute -top-2 -right-2 text-xs">{step.number}</span>
                   {step.icon}
                 </div>
               </div>

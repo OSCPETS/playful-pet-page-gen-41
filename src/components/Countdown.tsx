@@ -98,7 +98,7 @@ const Countdown = () => {
           <div className="inline-block px-3 py-1 text-xs font-medium bg-white/10 text-white rounded-full mb-4">
             Coming Soon
           </div>
-          <h2 className="heading-lg mb-4">OSCPETS Marketplace Launching Soon!</h2>
+          <h2 className="heading-lg mb-4">OSCPETS Marketplace Launching in 30 Days! ⏳</h2>
           <p className="text-lg text-white/80 max-w-2xl mx-auto">
             Be among the first to experience India's most innovative pet marketplace
           </p>

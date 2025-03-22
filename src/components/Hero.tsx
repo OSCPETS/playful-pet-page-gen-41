@@ -61,7 +61,7 @@ const Hero = () => {
         <div ref={textRef} className="animated-element order-2 md:order-1">
           <div className="section-label">Coming Soon</div>
           <h1 className="heading-xl mb-6">
-            India's First AI-Powered Pet Marketplace
+            India's First AI-Powered Pet Marketplace 🐾 – Shop, Learn & Care with AI!
           </h1>
           <p className="text-lg md:text-xl text-gray-600 mb-8 leading-relaxed">
             Find the best pet products, get expert pet care advice & connect with trusted vendors – All in one place!

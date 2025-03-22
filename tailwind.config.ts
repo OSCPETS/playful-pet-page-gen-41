@@ -168,7 +168,8 @@ export default {
 			},
 			fontFamily: {
 				sans: ['SF Pro Display', 'Inter', 'system-ui', 'sans-serif'],
-				serif: ['SF Pro Text', 'Georgia', 'serif']
+				serif: ['SF Pro Text', 'Georgia', 'serif'],
+				nunito: ['Nunito', 'sans-serif']
 			}
 		}
 	},

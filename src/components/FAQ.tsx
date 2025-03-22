@@ -1,6 +1,6 @@
 
 import { useState, useRef, useEffect } from 'react';
-import { ChevronDown, ChevronUp } from 'lucide-react';
+import { ChevronDown, ChevronUp, MessageCircle } from 'lucide-react';
 
 interface FAQItem {
   question: string;
@@ -12,6 +12,7 @@ const FAQ = () => {
   
   const sectionRef = useRef<HTMLDivElement>(null);
   const faqRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const ctaRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const observerOptions = {
@@ -41,6 +42,11 @@ const FAQ = () => {
         observer.observe(ref);
       }
     });
+
+    // Observe CTA button
+    if (ctaRef.current) {
+      observer.observe(ctaRef.current);
+    }
 
     return () => {
       observer.disconnect();
@@ -119,13 +125,17 @@ const FAQ = () => {
         </div>
 
         {/* WhatsApp Chat Button */}
-        <div className="text-center mt-12 animated-element" ref={(el) => (faqRefs.current[5] = el)}>
+        <div 
+          ref={ctaRef}
+          className="text-center mt-12 animated-element"
+        >
           <a 
             href="https://chat.whatsapp.com/invite-link" 
             target="_blank" 
             rel="noopener noreferrer"
             className="inline-flex items-center justify-center gap-2 bg-osc-blue text-white px-6 py-3 rounded-full font-medium shadow-lg hover:shadow-xl transition-all"
           >
+            <MessageCircle size={20} />
             <span>Chat with OSCPETS AI now!</span>
           </a>
         </div>
