@@ -20,6 +20,7 @@ const HowItWorks = () => {
             entry.target.classList.add('animate-fade-in');
           } else {
             entry.target.classList.add('animate-slide-up');
+            entry.target.classList.add('opacity-100'); // Ensure visibility
           }
         }
       });
@@ -73,12 +74,12 @@ const HowItWorks = () => {
   ];
 
   return (
-    <section id="how-it-works" className="section-padding bg-osc-gray">
+    <section id="how-it-works" className="section-padding bg-osc-gray py-20">
       <div className="container-custom">
         {/* Section Header */}
         <div 
           ref={sectionRef} 
-          className="text-center mb-16 animated-element"
+          className="text-center mb-16 animated-element opacity-100"
         >
           <div className="section-label">Process</div>
           <h2 className="heading-lg mb-4">How It Works?</h2>
@@ -93,7 +94,7 @@ const HowItWorks = () => {
             <div
               key={index}
               ref={(el) => (stepsRef.current[index] = el)}
-              className="timeline-step flex items-start gap-6 animated-element"
+              className="timeline-step flex items-start gap-6 animated-element mb-12 opacity-0"
               style={{ animationDelay: `${0.2 + index * 0.15}s` }}
             >
               <div className="flex-shrink-0">
