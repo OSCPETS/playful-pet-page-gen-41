@@ -1,6 +1,9 @@
 
 import { useRef, useEffect } from 'react';
 import { Star } from 'lucide-react';
+import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
+import { Card, CardContent } from '@/components/ui/card';
+import { Separator } from '@/components/ui/separator';
 
 const Testimonials = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -72,19 +75,19 @@ const Testimonials = () => {
   // Generate star rating
   const renderStars = (count: number) => {
     return Array.from({ length: count }).map((_, i) => (
-      <Star key={i} size={16} className="fill-osc-yellow text-osc-yellow" />
+      <Star key={i} size={16} fill="#FFD700" className="text-yellow-400" />
     ));
   };
 
   return (
-    <section id="testimonials" className="section-padding">
-      <div className="container-custom">
+    <section id="testimonials" className="section-padding bg-white py-16">
+      <div className="container-custom max-w-5xl">
         {/* Section Header */}
         <div 
           ref={sectionRef} 
           className="text-center mb-16 animated-element"
         >
-          <div className="section-label">Testimonials</div>
+          <div className="section-label mb-2">Testimonials</div>
           <h2 className="heading-lg mb-4">Real Pet Parents Love OSCPETS</h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
             Hear from our community of pet parents who have experienced the OSCPETS difference
@@ -92,41 +95,41 @@ const Testimonials = () => {
         </div>
 
         {/* Testimonials Grid */}
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-3 gap-10 mb-20">
           {testimonials.map((testimonial, index) => (
             <div
               key={index}
               ref={(el) => (testimonialRefs.current[index] = el)}
-              className="testimonial-card animated-element"
+              className="animated-element flex flex-col items-center text-center"
               style={{ animationDelay: `${0.2 + index * 0.1}s` }}
             >
-              <div className="flex items-center gap-3 mb-4">
-                <img 
-                  src={testimonial.image} 
-                  alt={testimonial.name} 
-                  className="w-12 h-12 rounded-full object-cover"
-                />
-                <div>
-                  <h3 className="font-semibold">{testimonial.name}</h3>
-                  <p className="text-sm text-gray-500">{testimonial.title}</p>
-                </div>
-              </div>
+              <Avatar className="w-16 h-16 mb-4 border-2 border-gray-100 shadow-sm">
+                <AvatarImage src={testimonial.image} alt={testimonial.name} />
+                <AvatarFallback>{testimonial.name.charAt(0)}</AvatarFallback>
+              </Avatar>
+              
+              <h3 className="font-semibold text-lg">{testimonial.name}</h3>
+              <p className="text-sm text-gray-500 mb-3">{testimonial.title}</p>
+              
               <div className="flex mb-3">
                 {renderStars(testimonial.stars)}
               </div>
+              
               <p className="text-gray-600 italic">"{testimonial.quote}"</p>
             </div>
           ))}
         </div>
 
-        {/* Instagram Feed Placeholder */}
-        <div className="mt-16 text-center animated-element" ref={(el) => (testimonialRefs.current[3] = el)}>
-          <h3 className="heading-md mb-6">Follow Us on Instagram</h3>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+        <Separator className="mb-12" />
+
+        {/* Instagram Feed */}
+        <div className="text-center mb-10 animated-element" ref={(el) => (testimonialRefs.current[3] = el)}>
+          <h3 className="text-2xl font-semibold mb-8">Follow Us on Instagram</h3>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4">
             {[1, 2, 3, 4, 5, 6].map((item) => (
               <div 
                 key={item} 
-                className="aspect-square bg-osc-gray rounded-lg overflow-hidden relative group"
+                className="aspect-square bg-gray-100 rounded-lg overflow-hidden relative group"
               >
                 <img 
                   src={`https://images.unsplash.com/photo-15901520${item}4-bdd8b25e3ccf?q=80&w=300`} 
