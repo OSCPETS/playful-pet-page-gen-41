@@ -90,7 +90,7 @@ const Testimonials = () => {
           <div className="section-label mb-2">Testimonials</div>
           <h2 className="heading-lg mb-4">Real Pet Parents Love OSCPETS</h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Hear from our community of pet parents who have experienced the OSCPETS difference
+            Hear from our pet-loving community who have experienced the OSCPETS difference!
           </p>
         </div>
 
@@ -125,8 +125,9 @@ const Testimonials = () => {
         {/* Instagram Feed */}
         <div className="text-center mb-10 animated-element" ref={(el) => (testimonialRefs.current[3] = el)}>
           <h3 className="text-2xl font-semibold mb-8">Follow Us on Instagram</h3>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4">
-            {[1, 2, 3, 4, 5, 6].map((item) => (
+          <p className="text-gray-600 mb-8">Stay up-to-date with our latest pet tips, offers, and adorable content! 🐶🐱</p>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
+            {[1, 2, 3, 4, 5].map((item) => (
               <div 
                 key={item} 
                 className="aspect-square bg-gray-100 rounded-lg overflow-hidden relative group"

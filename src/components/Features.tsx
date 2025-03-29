@@ -45,19 +45,19 @@ const Features = () => {
     {
       icon: <Bot className="w-8 h-8" />,
       title: "AI Pet Assistant",
-      description: "Get instant answers to pet care questions!",
+      description: "Get instant answers to your pet care questions.",
       number: "1️⃣"
     },
     {
       icon: <ShoppingBag className="w-8 h-8" />,
       title: "Multi-Vendor Marketplace",
-      description: "Shop from multiple trusted pet brands in one place!",
+      description: "Shop from multiple trusted pet brands all in one place.",
       number: "2️⃣"
     },
     {
       icon: <Truck className="w-8 h-8" />,
       title: "Smart Delivery",
-      description: "Fast shipping powered by Shiprocket.",
+      description: "Fast shipping powered by your local pet vendors.",
       number: "3️⃣"
     },
     {
@@ -79,8 +79,8 @@ const Features = () => {
           <div className="section-label">Features</div>
           <h2 className="heading-lg mb-4">Why OSCPETS?</h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            We're building the ultimate platform for pet parents in India, combining AI technology with 
-            trusted products and services.
+            We're building the ultimate tech-powered platform for pet parents in India, simplifying pet care 
+            by combining innovative technology with trusted products and services.
           </p>
         </div>
 
