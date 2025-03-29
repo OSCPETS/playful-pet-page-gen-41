@@ -56,7 +56,7 @@ const config = {
           foreground: "hsl(var(--card-foreground))",
         },
         // OSCPETS Custom colors
-        "osc-blue": "#47A3FF",
+        "osc-blue": "#0052AF", // Updated to match the logo color
         "osc-pale-blue": "#EBF5FF",
         "osc-light-pink": "#FFF0F5",
         "osc-dark-gray": "#4A4A4A",
