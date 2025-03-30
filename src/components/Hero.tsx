@@ -64,7 +64,7 @@ const Hero = () => {
             Your One-Stop Tech-Enabled Pet Marketplace in India – Shop, Care & Connect! 🐾
           </h1>
           <p className="text-lg md:text-xl text-gray-600 mb-8 leading-relaxed">
-            Find the best pet products, get expert pet care advice, and connect with trusted vendors – all in one tech-driven platform!
+            Find trusted pet products, get expert pet care advice, and explore exciting features – all in one tech-driven platform!
           </p>
           
           {/* CTA Buttons */}
