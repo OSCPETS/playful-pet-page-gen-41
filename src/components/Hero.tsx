@@ -1,7 +1,6 @@
 
 import { useEffect, useRef } from 'react';
 import { Smartphone, Instagram } from 'lucide-react';
-import PetImageSlider from './PetImageSlider';
 
 const Hero = () => {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -95,10 +94,11 @@ const Hero = () => {
         <div ref={imageRef} className="animated-element order-1 md:order-2 flex justify-center">
           <div className="relative">
             <div className="w-64 h-64 md:w-80 md:h-80 bg-osc-pale-blue rounded-full absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 -z-10"></div>
-            
-            {/* Replace static image with our new slider component */}
-            <PetImageSlider />
-            
+            <img 
+              src="/lovable-uploads/808b148e-3a5f-42cc-9c3e-090bd815b6c7.png" 
+              alt="Happy pet parent using OSCPETS" 
+              className="relative z-10 w-full max-w-md rounded-2xl shadow-lg animate-float"
+            />
             <div className="absolute -bottom-6 -right-6 glass-card p-4 rounded-xl shadow-lg animate-float" style={{ animationDelay: '1s' }}>
               <div className="flex items-center gap-2">
                 <div className="w-8 h-8 bg-osc-blue rounded-full flex items-center justify-center text-white">

@@ -62,13 +62,13 @@ const HowItWorks = () => {
     {
       icon: <Truck size={24} />,
       title: "Get Fast & Safe Delivery",
-      description: "Doorstep delivery powered by our trusted local vendor in Pune.",
+      description: "Doorstep delivery for all your pet's needs.",
       number: "3️⃣"
     },
     {
       icon: <Users size={24} />,
       title: "Join the Community",
-      description: "Be part of our exclusive WhatsApp group for pet parents!",
+      description: "Join our exclusive WhatsApp group for pet parents!",
       number: "4️⃣"
     }
   ];
