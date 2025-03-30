@@ -64,7 +64,7 @@ const Hero = () => {
             Your One-Stop Tech-Enabled Pet Marketplace in India – Shop, Care & Connect! 🐾
           </h1>
           <p className="text-lg md:text-xl text-gray-600 mb-8 leading-relaxed">
-            Find trusted pet products, get expert pet care advice, and explore exciting features – all in one tech-driven platform!
+            Find the best pet products, get expert pet care advice, and connect with trusted vendors – all in one tech-driven platform!
           </p>
           
           {/* CTA Buttons */}
@@ -95,8 +95,8 @@ const Hero = () => {
           <div className="relative">
             <div className="w-64 h-64 md:w-80 md:h-80 bg-osc-pale-blue rounded-full absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 -z-10"></div>
             <img 
-              src="https://images.unsplash.com/photo-1543466835-00a7907e9de1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" 
-              alt="Happy pet dog with smiling face" 
+              src="https://images.unsplash.com/photo-1583337130417-3346a1be7dee?q=80&w=2064" 
+              alt="Happy pet parent using OSCPETS" 
               className="relative z-10 w-full max-w-md rounded-2xl shadow-lg animate-float"
             />
             <div className="absolute -bottom-6 -right-6 glass-card p-4 rounded-xl shadow-lg animate-float" style={{ animationDelay: '1s' }}>
