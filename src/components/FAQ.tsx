@@ -61,7 +61,7 @@ const FAQ = () => {
   const faqs: FAQItem[] = [
     {
       question: "What makes OSCPETS different?",
-      answer: "We're India's first tech-powered pet marketplace, combining AI technology with trusted pet products and services to simplify pet parenting!"
+      answer: "We're building a tech-driven pet marketplace to simplify pet parenting, starting with trusted local vendor collaborations and AI-powered features."
     },
     {
       question: "How does the AI assistant work?",
@@ -77,7 +77,7 @@ const FAQ = () => {
     },
     {
       question: "What types of products will be available?",
-      answer: "Our marketplace will feature pet food, grooming supplies, accessories, and much more – all from trusted local vendors."
+      answer: "Our marketplace will feature essential pet products, including pet food, grooming supplies, and accessories – all from trusted local vendors."
     }
   ];
 
