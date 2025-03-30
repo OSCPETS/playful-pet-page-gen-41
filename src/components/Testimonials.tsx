@@ -1,13 +1,11 @@
 
 import { useRef, useEffect } from 'react';
-import { Star } from 'lucide-react';
-import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
-import { Card, CardContent } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
 
 const Testimonials = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
-  const testimonialRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const contentRef = useRef<HTMLDivElement>(null);
+  const instagramRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const observerOptions = {
@@ -19,65 +17,30 @@ const Testimonials = () => {
     const observerCallback = (entries: IntersectionObserverEntry[]) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          if (entry.target === sectionRef.current) {
-            entry.target.classList.add('animate-fade-in');
-          } else {
-            entry.target.classList.add('animate-fade-in');
-          }
+          entry.target.classList.add('animate-fade-in');
         }
       });
     };
 
     const observer = new IntersectionObserver(observerCallback, observerOptions);
 
-    // Observe section title
+    // Observe section elements
     if (sectionRef.current) {
       observer.observe(sectionRef.current);
     }
-
-    // Observe each testimonial
-    testimonialRefs.current.forEach((ref) => {
-      if (ref) {
-        observer.observe(ref);
-      }
-    });
+    
+    if (contentRef.current) {
+      observer.observe(contentRef.current);
+    }
+    
+    if (instagramRef.current) {
+      observer.observe(instagramRef.current);
+    }
 
     return () => {
       observer.disconnect();
     };
   }, []);
-
-  // Testimonials data
-  const testimonials = [
-    {
-      name: "Aditi",
-      title: "Pet Parent",
-      image: "https://images.unsplash.com/photo-1567532939604-b6b5b0db2604?q=80&w=1000",
-      quote: "OSCPETS AI helped me find the perfect food for my dog!",
-      stars: 5
-    },
-    {
-      name: "Rohit",
-      title: "Dog Lover",
-      image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=1000",
-      quote: "Finally! A marketplace that understands pet needs.",
-      stars: 5
-    },
-    {
-      name: "Priya",
-      title: "Cat Mom",
-      image: "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?q=80&w=1000",
-      quote: "The AI assistant saved me from a late-night vet visit!",
-      stars: 5
-    }
-  ];
-
-  // Generate star rating
-  const renderStars = (count: number) => {
-    return Array.from({ length: count }).map((_, i) => (
-      <Star key={i} size={16} fill="#FFD700" className="text-yellow-400" />
-    ));
-  };
 
   return (
     <section id="testimonials" className="section-padding bg-white py-16">
@@ -88,42 +51,31 @@ const Testimonials = () => {
           className="text-center mb-16 animated-element"
         >
           <div className="section-label mb-2">Testimonials</div>
-          <h2 className="heading-lg mb-4">Real Pet Parents Love OSCPETS</h2>
+          <h2 className="heading-lg mb-4">Real Pet Parents Love OSCPETS (Coming Soon)</h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Hear from our pet-loving community who have experienced the OSCPETS difference!
+            We're just getting started! Stay tuned for real reviews and stories from pet parents who'll experience OSCPETS soon.
           </p>
         </div>
 
-        {/* Testimonials Grid */}
-        <div className="grid md:grid-cols-3 gap-10 mb-20">
-          {testimonials.map((testimonial, index) => (
-            <div
-              key={index}
-              ref={(el) => (testimonialRefs.current[index] = el)}
-              className="animated-element flex flex-col items-center text-center"
-              style={{ animationDelay: `${0.2 + index * 0.1}s` }}
-            >
-              <Avatar className="w-16 h-16 mb-4 border-2 border-gray-100 shadow-sm">
-                <AvatarImage src={testimonial.image} alt={testimonial.name} />
-                <AvatarFallback>{testimonial.name.charAt(0)}</AvatarFallback>
-              </Avatar>
-              
-              <h3 className="font-semibold text-lg">{testimonial.name}</h3>
-              <p className="text-sm text-gray-500 mb-3">{testimonial.title}</p>
-              
-              <div className="flex mb-3">
-                {renderStars(testimonial.stars)}
-              </div>
-              
-              <p className="text-gray-600 italic">"{testimonial.quote}"</p>
-            </div>
-          ))}
+        {/* Coming Soon Placeholder */}
+        <div 
+          ref={contentRef}
+          className="flex justify-center items-center mb-16 animated-element"
+          style={{ animationDelay: '0.2s' }}
+        >
+          <div className="text-center p-8 bg-gray-50 rounded-xl border border-gray-100 shadow-sm max-w-2xl">
+            <div className="text-6xl mb-6">🐾</div>
+            <h3 className="text-xl font-medium mb-4">Be the First to Share Your Experience!</h3>
+            <p className="text-gray-600">
+              Our community of pet parents is growing. Join our waitlist today and be among the first to experience and review OSCPETS!
+            </p>
+          </div>
         </div>
 
         <Separator className="mb-12" />
 
         {/* Instagram Feed */}
-        <div className="text-center mb-10 animated-element" ref={(el) => (testimonialRefs.current[3] = el)}>
+        <div className="text-center mb-10 animated-element" ref={instagramRef} style={{ animationDelay: '0.4s' }}>
           <h3 className="text-2xl font-semibold mb-8">Follow Us on Instagram</h3>
           <p className="text-gray-600 mb-8">Stay up-to-date with our latest pet tips, offers, and adorable content! 🐶🐱</p>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
