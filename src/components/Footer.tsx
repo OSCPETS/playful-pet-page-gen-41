@@ -11,7 +11,7 @@ const Footer = () => {
           {/* Brand */}
           <div>
             <a href="#" className="inline-block mb-4">
-              <img src="/oscpets-logo.png" alt="OSCPETS Logo" className="h-10" />
+              <span className="text-2xl font-bold text-osc-blue">OSC<span className="text-osc-dark-gray">PETS</span></span>
             </a>
             <p className="text-gray-600 mb-4">
               Your Tech-Driven Pet Marketplace - Bringing technology and heart together for the best pet parent experience!
