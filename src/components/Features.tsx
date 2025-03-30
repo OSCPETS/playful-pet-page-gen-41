@@ -1,6 +1,6 @@
 
 import { useRef, useEffect } from 'react';
-import { Bot, Users, Truck, ShoppingBag } from 'lucide-react';
+import { Bot, Store, Truck, Users } from 'lucide-react';
 
 const Features = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -49,7 +49,7 @@ const Features = () => {
       number: "1️⃣"
     },
     {
-      icon: <ShoppingBag className="w-8 h-8" />,
+      icon: <Store className="w-8 h-8" />,
       title: "Local Vendor Partnership",
       description: "Collaborating with a trusted vendor in Pune to kick-start your shopping experience.",
       number: "2️⃣"
@@ -79,7 +79,8 @@ const Features = () => {
           <div className="section-label">Features</div>
           <h2 className="heading-lg mb-4">Why OSCPETS?</h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            We're building an innovative, tech-powered platform for pet parents in India, starting with trusted pet products and local vendor collaborations.
+            We're building an innovative, tech-powered platform for pet parents in India, starting with 
+            trusted pet products and local vendor collaborations.
           </p>
         </div>
 
