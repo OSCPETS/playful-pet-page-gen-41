@@ -96,7 +96,7 @@ const Hero = () => {
           <div className="relative">
             <div className="w-64 h-64 md:w-80 md:h-80 bg-osc-pale-blue rounded-full absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 -z-10"></div>
             
-            {/* Replace static image with our new slider component */}
+            {/* Pet Image Slider Component */}
             <PetImageSlider />
             
             <div className="absolute -bottom-6 -right-6 glass-card p-4 rounded-xl shadow-lg animate-float" style={{ animationDelay: '1s' }}>
