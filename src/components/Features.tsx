@@ -1,10 +1,12 @@
 
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import { Bot, ShoppingBag, Truck, Users } from 'lucide-react';
+import { Button } from './ui/button';
 
 const Features = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const featureRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const [formOpen, setFormOpen] = useState(false);
 
   useEffect(() => {
     const observerOptions = {
@@ -39,6 +41,10 @@ const Features = () => {
       observer.disconnect();
     };
   }, []);
+
+  const openForm = () => {
+    window.open('https://forms.gle/YourGoogleFormURL', '_blank');
+  };
 
   // Features data
   const features = [
@@ -86,7 +92,7 @@ const Features = () => {
         </div>
 
         {/* Features Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           {features.map((feature, index) => (
             <div
               key={index}
@@ -110,6 +116,20 @@ const Features = () => {
               <p className="text-gray-600">{feature.description}</p>
             </div>
           ))}
+        </div>
+
+        {/* Call to Action */}
+        <div className="text-center mt-8 animated-element" ref={(el) => (featureRefs.current[4] = el)}>
+          <Button 
+            onClick={openForm}
+            className="bg-osc-blue hover:bg-osc-blue/90 text-white px-8 py-3 rounded-full font-medium 
+                    shadow-sm transition-all duration-300 hover:shadow-md"
+          >
+            Follow OSCPETS Now - Get Free Pet Care Ebooks
+          </Button>
+          <p className="text-sm text-gray-600 mt-3">
+            Fill the form to receive updates when we launch and get free pet care ebooks!
+          </p>
         </div>
       </div>
     </section>
