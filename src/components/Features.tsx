@@ -71,7 +71,7 @@ const Features = () => {
       title: "Community First",
       description: "Join our growing pet parent community and be part of something exciting!",
       number: "4️⃣",
-      image: "/lovable-uploads/7be744b1-a3ca-41bb-b368-25fcfbddc02d.png"
+      image: "/lovable-uploads/a623ab59-e81e-48f9-82df-c4dc99ae0a7d.png"
     }
   ];
 
