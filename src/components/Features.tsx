@@ -62,9 +62,10 @@ const Features = () => {
     },
     {
       icon: <Users className="w-8 h-8" />,
-      title: "Trusted by Pet Parents",
-      description: "Real reviews from 1,000+ happy pet owners!",
-      number: "4️⃣"
+      title: "Community First",
+      description: "Join our growing pet parent community and be part of something exciting!",
+      number: "4️⃣",
+      image: "/lovable-uploads/ad043302-1835-42a1-9268-f6ae490297ac.png"
     }
   ];
 
@@ -95,7 +96,15 @@ const Features = () => {
             >
               <div className="absolute top-2 right-2 text-sm opacity-60">{feature.number}</div>
               <div className="feature-icon-container">
-                {feature.icon}
+                {feature.image ? (
+                  <img 
+                    src={feature.image} 
+                    alt={feature.title} 
+                    className="w-12 h-12 object-contain"
+                  />
+                ) : (
+                  feature.icon
+                )}
               </div>
               <h3 className="text-xl font-semibold mb-3">{feature.title}</h3>
               <p className="text-gray-600">{feature.description}</p>
