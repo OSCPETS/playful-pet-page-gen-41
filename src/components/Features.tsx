@@ -1,12 +1,10 @@
 
-import { useRef, useEffect, useState } from 'react';
-import { Bot, ShoppingBag, Truck, Users, BookAudio } from 'lucide-react';
-import { Button } from './ui/button';
+import { useRef, useEffect } from 'react';
+import { Bot, ShoppingBag, Truck, Users } from 'lucide-react';
 
 const Features = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const featureRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const [formOpen, setFormOpen] = useState(false);
 
   useEffect(() => {
     const observerOptions = {
@@ -42,10 +40,6 @@ const Features = () => {
     };
   }, []);
 
-  const openForm = () => {
-    window.open('https://forms.gle/YourGoogleFormURL', '_blank');
-  };
-
   // Features data
   const features = [
     {
@@ -68,10 +62,9 @@ const Features = () => {
     },
     {
       icon: <Users className="w-8 h-8" />,
-      title: "Community First",
-      description: "Join our growing pet parent community and be part of something exciting!",
-      number: "4️⃣",
-      image: "/lovable-uploads/a623ab59-e81e-48f9-82df-c4dc99ae0a7d.png"
+      title: "Trusted by Pet Parents",
+      description: "Real reviews from 1,000+ happy pet owners!",
+      number: "4️⃣"
     }
   ];
 
@@ -92,7 +85,7 @@ const Features = () => {
         </div>
 
         {/* Features Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {features.map((feature, index) => (
             <div
               key={index}
@@ -102,35 +95,12 @@ const Features = () => {
             >
               <div className="absolute top-2 right-2 text-sm opacity-60">{feature.number}</div>
               <div className="feature-icon-container">
-                {feature.image ? (
-                  <img 
-                    src={feature.image} 
-                    alt={feature.title} 
-                    className="w-12 h-12 object-contain"
-                  />
-                ) : (
-                  feature.icon
-                )}
+                {feature.icon}
               </div>
               <h3 className="text-xl font-semibold mb-3">{feature.title}</h3>
               <p className="text-gray-600">{feature.description}</p>
             </div>
           ))}
-        </div>
-
-        {/* Call to Action */}
-        <div className="text-center mt-8 animated-element" ref={(el) => (featureRefs.current[4] = el)}>
-          <Button 
-            onClick={openForm}
-            className="bg-osc-blue hover:bg-osc-blue/90 text-white px-8 py-3 rounded-full font-medium 
-                    shadow-sm transition-all duration-300 hover:shadow-md"
-          >
-            <BookAudio className="w-5 h-5 mr-2" />
-            Follow OSCPETS Now - Get Free Pet Care Ebooks
-          </Button>
-          <p className="text-sm text-gray-600 mt-3">
-            Fill the form to receive updates when we launch and get free pet care ebooks!
-          </p>
         </div>
       </div>
     </section>
