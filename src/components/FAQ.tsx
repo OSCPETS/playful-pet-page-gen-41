@@ -72,8 +72,8 @@ const FAQ = () => {
       answer: "We're launching in just 30 days! Join our waitlist to be among the first users."
     },
     {
-      question: "How do I get early access?",
-      answer: "Sign up now to get exclusive early access to our AI Pet Assistant and free perks before the official launch!"
+      question: "How do I get free ebooks?",
+      answer: "Follow OSCPETS button go there fill the form our team can mail you the free audio books and update an notify through mail when launching"
     },
     {
       question: "What types of products will be available?",

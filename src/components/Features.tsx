@@ -1,6 +1,6 @@
 
 import { useRef, useEffect, useState } from 'react';
-import { Bot, ShoppingBag, Truck, Users } from 'lucide-react';
+import { Bot, ShoppingBag, Truck, Users, BookAudio } from 'lucide-react';
 import { Button } from './ui/button';
 
 const Features = () => {
@@ -125,6 +125,7 @@ const Features = () => {
             className="bg-osc-blue hover:bg-osc-blue/90 text-white px-8 py-3 rounded-full font-medium 
                     shadow-sm transition-all duration-300 hover:shadow-md"
           >
+            <BookAudio className="w-5 h-5 mr-2" />
             Follow OSCPETS Now - Get Free Pet Care Ebooks
           </Button>
           <p className="text-sm text-gray-600 mt-3">
