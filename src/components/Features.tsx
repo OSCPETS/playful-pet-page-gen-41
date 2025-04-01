@@ -58,7 +58,7 @@ const Features = () => {
     {
       icon: <Truck className="w-8 h-8" />,
       title: "Smart Delivery",
-      description: "Fast shipping powered by your local pet vendors.",
+      description: "Fast And Safe Delivery on same day",
       number: "3️⃣"
     },
     {
