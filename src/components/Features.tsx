@@ -1,6 +1,7 @@
 
 import { useRef, useEffect } from 'react';
-import { Bot, ShoppingBag, Truck, Users } from 'lucide-react';
+import { Bot, ShoppingBag, Truck, Users, BookAudio } from 'lucide-react';
+import { Button } from './ui/button';
 
 const Features = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -62,8 +63,8 @@ const Features = () => {
     },
     {
       icon: <Users className="w-8 h-8" />,
-      title: "Trusted by Pet Parents",
-      description: "Real reviews from 1,000+ happy pet owners!",
+      title: "Community First",
+      description: "Join our growing pet parent community and be part of something exciting!",
       number: "4️⃣"
     }
   ];
@@ -85,7 +86,7 @@ const Features = () => {
         </div>
 
         {/* Features Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           {features.map((feature, index) => (
             <div
               key={index}
@@ -101,6 +102,21 @@ const Features = () => {
               <p className="text-gray-600">{feature.description}</p>
             </div>
           ))}
+        </div>
+
+        {/* Follow OSCPETS Button */}
+        <div className="text-center mt-8 mb-6 animated-element" 
+            ref={(el) => (featureRefs.current[features.length] = el)}
+            style={{ animationDelay: `${0.2 + features.length * 0.1}s` }}>
+          <Button 
+            className="bg-osc-blue hover:bg-osc-blue/90 text-white rounded-full px-6 py-6 text-base"
+            onClick={() => window.open("#", "_blank")}
+          >
+            <BookAudio className="mr-2" /> Follow OSCPETS Now - Get Free Pet Care Ebooks
+          </Button>
+          <p className="text-sm text-gray-600 mt-4">
+            Fill the form to receive updates when we launch and get free pet care ebooks!
+          </p>
         </div>
       </div>
     </section>
