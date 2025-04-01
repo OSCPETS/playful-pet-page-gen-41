@@ -2,7 +2,6 @@
 import { useState } from 'react';
 import { Bot, X, MessageSquare, ScrollText, Apple, Dumbbell } from 'lucide-react';
 import { cn } from "@/lib/utils";
-import { Badge } from "./ui/badge";
 
 // AI assistant categories
 const assistantTypes = [
@@ -82,16 +81,10 @@ const PetAIAssistant = () => {
       {/* AI Assistant Button */}
       <button 
         onClick={toggleAssistant}
-        className="fixed right-6 bottom-6 bg-osc-blue text-white p-3 rounded-full shadow-lg hover:bg-osc-blue/90 transition-all z-40 relative"
+        className="fixed right-6 bottom-6 bg-osc-blue text-white p-3 rounded-full shadow-lg hover:bg-osc-blue/90 transition-all z-40"
         aria-label="Open Pet AI Assistant"
       >
         <Bot size={24} />
-        <Badge 
-          variant="destructive" 
-          className="absolute -top-2 -right-2 px-2 py-0.5 text-[10px] font-bold"
-        >
-          COMING SOON
-        </Badge>
       </button>
       
       {/* AI Assistant Panel */}
@@ -106,7 +99,6 @@ const PetAIAssistant = () => {
           <div className="flex items-center gap-2">
             <Bot size={20} />
             <h3 className="font-semibold">OSCPETS AI Assistant</h3>
-            <Badge variant="destructive" className="ml-2 text-[10px]">COMING SOON</Badge>
           </div>
           <button 
             onClick={toggleAssistant} 
