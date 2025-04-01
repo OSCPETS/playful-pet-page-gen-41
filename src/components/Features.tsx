@@ -51,14 +51,14 @@ const Features = () => {
     },
     {
       icon: <ShoppingBag className="w-8 h-8" />,
-      title: "Multi-Vendor Marketplace",
-      description: "Shop from multiple trusted pet brands all in one place.",
+      title: "Trusted Pet Products",
+      description: "Shop high-quality pet products from trusted brands, all in one place!",
       number: "2️⃣"
     },
     {
       icon: <Truck className="w-8 h-8" />,
       title: "Smart Delivery",
-      description: "Fast And Safe Delivery on same day",
+      description: "Fast and safe doorstep delivery for your pet's needs.",
       number: "3️⃣"
     },
     {
