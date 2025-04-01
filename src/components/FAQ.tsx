@@ -1,6 +1,7 @@
 
 import { useState, useRef, useEffect } from 'react';
-import { ChevronDown, ChevronUp, MessageCircle } from 'lucide-react';
+import { ChevronDown, ChevronUp, MessageCircle, HelpCircle } from 'lucide-react';
+import { Button } from './ui/button';
 
 interface FAQItem {
   question: string;
@@ -13,6 +14,7 @@ const FAQ = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const faqRefs = useRef<(HTMLDivElement | null)[]>([]);
   const ctaRef = useRef<HTMLDivElement>(null);
+  const inquiryRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const observerOptions = {
@@ -48,6 +50,11 @@ const FAQ = () => {
       observer.observe(ctaRef.current);
     }
 
+    // Observe inquiry button
+    if (inquiryRef.current) {
+      observer.observe(inquiryRef.current);
+    }
+
     return () => {
       observer.disconnect();
     };
@@ -61,7 +68,7 @@ const FAQ = () => {
   const faqs: FAQItem[] = [
     {
       question: "What makes OSCPETS different?",
-      answer: "We're India's first tech-powered pet marketplace, combining AI technology with trusted pet products and services to simplify pet parenting!"
+      answer: "Your One-Stop Tech-Enabled Pet Marketplace in India – Shop, Care & Connect! 🐾 Find the best pet products, get expert pet care advice, and connect with trusted vendors – all in one tech-driven platform!"
     },
     {
       question: "How does the AI assistant work?",
@@ -69,11 +76,11 @@ const FAQ = () => {
     },
     {
       question: "When is the official launch?",
-      answer: "We're launching in just 30 days! Join our waitlist to be among the first users."
+      answer: "We're launching in just 60 days! Join our waitlist to be among the first users."
     },
     {
-      question: "How do I get early access?",
-      answer: "Sign up now to get exclusive early access to our AI Pet Assistant and free perks before the official launch!"
+      question: "How do I get a free audiobook?",
+      answer: "Just follow OSCPETS, fill in your details, and receive your audiobook through our official email!"
     },
     {
       question: "What types of products will be available?",
@@ -138,6 +145,24 @@ const FAQ = () => {
             <MessageCircle size={20} />
             <span>Chat with OSCPETS AI Now!</span>
           </a>
+        </div>
+
+        {/* Inquiry Button */}
+        <div 
+          ref={inquiryRef}
+          className="text-center mt-8 animated-element"
+          style={{ animationDelay: '0.4s' }}
+        >
+          <Button 
+            className="bg-white text-osc-dark-gray border border-gray-300 hover:bg-gray-100 px-6 py-3 rounded-full font-medium shadow-md hover:shadow-lg transition-all"
+            onClick={() => window.open("mailto:info@oscpets.com", "_blank")}
+          >
+            <HelpCircle size={20} className="mr-2" />
+            <span>I HAVE A QUESTION OR INQUIRY</span>
+          </Button>
+          <p className="text-sm text-gray-600 mt-3">
+            Have more questions? We're here to help!
+          </p>
         </div>
       </div>
     </section>
