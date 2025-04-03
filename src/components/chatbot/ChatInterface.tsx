@@ -9,9 +9,9 @@ import { toast } from "@/hooks/use-toast";
 // Create system prompt based on selected type
 const getSystemPrompt = (type: string): string => {
   const systemPrompts: Record<string, string> = {
-    vet: "You are an AI veterinary assistant for OSCPETS, a pet marketplace in India. Provide helpful information about pet health, common medical issues, and when to see a vet. Always clarify you're not a replacement for professional veterinary care. Be concise and friendly.",
-    nutrition: "You are an AI pet nutrition advisor for OSCPETS, a pet marketplace in India. Provide helpful information about pet diets, nutrition, and feeding guidelines. Be concise and friendly, focusing on scientifically accurate information.",
-    training: "You are an AI pet training assistant for OSCPETS, a pet marketplace in India. Provide helpful advice on pet behavior, training techniques, and common behavioral issues. Be concise and friendly, focusing on positive reinforcement methods."
+    vet: "You are an AI veterinary assistant for OSCPETS, a pet marketplace in India. Provide helpful information about pet health, common medical issues, and when to see a vet. Always clarify you're not a replacement for professional veterinary care. Format your responses in a clear, readable way with proper paragraphs and bullet points (use * for bullet points). Be concise and friendly.",
+    nutrition: "You are an AI pet nutrition advisor for OSCPETS, a pet marketplace in India. Provide helpful information about pet diets, nutrition, and feeding guidelines. Format your responses in a clear, readable way with proper paragraphs and bullet points (use * for bullet points). Be concise and friendly, focusing on scientifically accurate information.",
+    training: "You are an AI pet training assistant for OSCPETS, a pet marketplace in India. Provide helpful advice on pet behavior, training techniques, and common behavioral issues. Format your responses in a clear, readable way with proper paragraphs and bullet points (use * for bullet points). Be concise and friendly, focusing on positive reinforcement methods."
   };
   
   return systemPrompts[type] || systemPrompts.vet;
@@ -44,7 +44,7 @@ const ChatInterface = ({ topicId, onBackToTopics, apiKey, model }: ChatInterface
   // Set welcome message on topic selection
   useEffect(() => {
     const welcomeMessages: Record<string, string> = {
-      vet: "Hello! I'm your veterinary assistant. How can I help with your pet's health today?",
+      vet: "Hello! I'm here to help. Whether you have questions about your pet's health, common medical issues, or when to see a vet, I'm happy to assist. Just keep in mind that I'm not a substitute for professional veterinary advice. How can I help you today? 😊",
       nutrition: "Hi there! I'm your pet nutrition advisor. What would you like to know about pet diet and food?",
       training: "Welcome! I'm your pet training assistant. How can I help with your pet's behavior and training?"
     };
@@ -56,6 +56,23 @@ const ChatInterface = ({ topicId, onBackToTopics, apiKey, model }: ChatInterface
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages]);
+  
+  // Format AI response for better readability
+  const formatAIResponse = (text: string): string => {
+    // Replace ### markers with proper line breaks
+    let formatted = text.replace(/###\s+\d+\./g, '\n\n');
+    
+    // Replace ** with bold formatting
+    formatted = formatted.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+    
+    // Replace * with bullet points where appropriate
+    formatted = formatted.replace(/\n\s*\*\s+/g, '\n• ');
+    
+    // Ensure proper paragraph breaks
+    formatted = formatted.replace(/\n{3,}/g, '\n\n');
+    
+    return formatted;
+  };
   
   const handleSendQuestion = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -72,6 +89,10 @@ const ChatInterface = ({ topicId, onBackToTopics, apiKey, model }: ChatInterface
       // Prepare messages for the API request
       const apiMessages = [
         { role: "system", content: systemPrompt },
+        ...messages.map(msg => ({
+          role: msg.type === 'user' ? 'user' : 'assistant',
+          content: msg.content
+        })),
         { role: "user", content: question }
       ];
       
@@ -87,7 +108,7 @@ const ChatInterface = ({ topicId, onBackToTopics, apiKey, model }: ChatInterface
         body: JSON.stringify({
           model: model,
           messages: apiMessages,
-          max_tokens: 500,
+          max_tokens: 800,
         }),
       });
       
@@ -96,7 +117,10 @@ const ChatInterface = ({ topicId, onBackToTopics, apiKey, model }: ChatInterface
       }
       
       const data = await response.json();
-      const aiResponse = data.choices[0]?.message?.content || "I'm sorry, I couldn't generate a response. Please try again.";
+      let aiResponse = data.choices[0]?.message?.content || "I'm sorry, I couldn't generate a response. Please try again.";
+      
+      // Format the AI response for better readability
+      aiResponse = formatAIResponse(aiResponse);
       
       // Add AI response to messages
       setMessages(prev => [...prev, { type: 'ai', content: aiResponse }]);
@@ -118,6 +142,13 @@ const ChatInterface = ({ topicId, onBackToTopics, apiKey, model }: ChatInterface
       setIsLoading(false);
       setQuestion('');
     }
+  };
+  
+  // Render AI message content with proper formatting
+  const renderAIContent = (content: string) => {
+    return (
+      <div className="whitespace-pre-wrap" dangerouslySetInnerHTML={{ __html: content }} />
+    );
   };
   
   return (
@@ -160,7 +191,7 @@ const ChatInterface = ({ topicId, onBackToTopics, apiKey, model }: ChatInterface
                   : "bg-white border border-gray-200 shadow-sm rounded-tl-none"
               )}
             >
-              {msg.content}
+              {msg.type === 'ai' ? renderAIContent(msg.content) : msg.content}
             </div>
             {msg.type === 'user' && (
               <div className="bg-gray-300 p-2 rounded-full text-gray-700 shrink-0">
