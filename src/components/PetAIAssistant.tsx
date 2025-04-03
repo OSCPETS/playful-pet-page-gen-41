@@ -14,15 +14,20 @@ const assistantTypes = [
   { id: 'training', label: 'Training Tips', icon: Dumbbell, description: 'Get guidance on pet behavior and training techniques' }
 ];
 
+// Default model and API key
+const DEFAULT_MODEL = "qwen/qwen2.5-vl-32b-instruct:free";
+const DEFAULT_API_KEY = "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";
+
 const PetAIAssistant = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedType, setSelectedType] = useState<string | null>(null);
   const [question, setQuestion] = useState('');
   const [messages, setMessages] = useState<{type: 'user' | 'ai', content: string}[]>([]);
   const [showPuneNotice, setShowPuneNotice] = useState(true);
-  const [apiKey, setApiKey] = useState('');
-  const [apiKeySubmitted, setApiKeySubmitted] = useState(false);
+  const [apiKey, setApiKey] = useState(DEFAULT_API_KEY);
+  const [apiKeySubmitted, setApiKeySubmitted] = useState(true); // Set to true by default now
   const [isLoading, setIsLoading] = useState(false);
+  const [model, setModel] = useState(DEFAULT_MODEL);
   
   const toggleAssistant = () => {
     setIsOpen(!isOpen);
@@ -82,7 +87,7 @@ const PetAIAssistant = () => {
         { role: "user", content: question }
       ];
       
-      // Make API request to OpenRouter
+      // Make API request to OpenRouter with the default model
       const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
         method: "POST",
         headers: {
@@ -92,7 +97,7 @@ const PetAIAssistant = () => {
           "X-Title": "OSCPETS AI Assistant"
         },
         body: JSON.stringify({
-          model: "anthropic/claude-3-haiku",
+          model: model,
           messages: messages,
           max_tokens: 500,
         }),
