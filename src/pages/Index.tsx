@@ -8,7 +8,7 @@ import Testimonials from '@/components/Testimonials';
 import Countdown from '@/components/Countdown';
 import FAQ from '@/components/FAQ';
 import Footer from '@/components/Footer';
-import PetAIAssistant from '@/components/PetAIAssistant';
+import ChatButton from '@/components/ChatButton';
 
 const Index = () => {
   // Smooth scroll for anchor links
@@ -49,7 +49,7 @@ const Index = () => {
         <FAQ />
       </main>
       <Footer />
-      <PetAIAssistant />
+      <ChatButton />
     </div>
   );
 };

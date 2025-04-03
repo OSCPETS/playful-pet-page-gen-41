@@ -14,7 +14,7 @@ const Footer = () => {
               <span className="text-2xl font-bold text-osc-blue">OSC<span className="text-osc-dark-gray">PETS</span></span>
             </a>
             <p className="text-gray-600 mb-4">
-              India's first AI-powered pet marketplace, combining technology with heart for the best pet care experience.
+              Your Tech-Driven Pet Marketplace - Bringing technology and heart together for the best pet parent experience!
             </p>
             <div className="flex space-x-4">
               <a href="https://instagram.com/oscpets" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-osc-blue transition-colors">
