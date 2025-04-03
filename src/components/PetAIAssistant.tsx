@@ -1,6 +1,6 @@
 
 import { useState } from 'react';
-import { Bot, X, MessageSquare, ScrollText, Apple, Dumbbell } from 'lucide-react';
+import { Bot, X, MessageSquare, ScrollText, Apple, Dumbbell, MapPin } from 'lucide-react';
 import { cn } from "@/lib/utils";
 
 // AI assistant categories
@@ -15,6 +15,7 @@ const PetAIAssistant = () => {
   const [selectedType, setSelectedType] = useState<string | null>(null);
   const [question, setQuestion] = useState('');
   const [messages, setMessages] = useState<{type: 'user' | 'ai', content: string}[]>([]);
+  const [showPuneNotice, setShowPuneNotice] = useState(true);
 
   const toggleAssistant = () => {
     setIsOpen(!isOpen);
@@ -76,8 +77,30 @@ const PetAIAssistant = () => {
     setQuestion('');
   };
 
+  const closePuneNotice = () => {
+    setShowPuneNotice(false);
+  };
+
   return (
     <>
+      {/* Pune Coming Soon Notification */}
+      {showPuneNotice && (
+        <div className="fixed bottom-24 right-6 max-w-xs bg-osc-blue text-white p-4 rounded-lg shadow-lg z-40 animate-fade-in">
+          <button 
+            onClick={closePuneNotice}
+            className="absolute top-2 right-2 text-white/80 hover:text-white"
+            aria-label="Close notification"
+          >
+            <X size={16} />
+          </button>
+          <div className="flex items-center gap-2 mb-2">
+            <MapPin size={18} />
+            <p className="font-semibold">Coming Soon in Pune!</p>
+          </div>
+          <p className="text-sm">OSCPETS services will be launching in Pune soon. Stay tuned for updates!</p>
+        </div>
+      )}
+
       {/* AI Assistant Button */}
       <button 
         onClick={toggleAssistant}
