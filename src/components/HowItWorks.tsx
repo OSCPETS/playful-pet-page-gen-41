@@ -50,25 +50,25 @@ const HowItWorks = () => {
     {
       icon: <Bot size={24} />,
       title: "Chat with OSCPETS AI",
-      description: "Ask pet care questions and get expert tips instantly.",
+      description: "Ask pet care questions, get expert tips!",
       number: "1️⃣"
     },
     {
       icon: <ShoppingCart size={24} />,
       title: "Explore & Shop Pet Products",
-      description: "Find everything from pet food to grooming essentials.",
+      description: "Find everything from food to grooming supplies!",
       number: "2️⃣"
     },
     {
       icon: <Truck size={24} />,
       title: "Get Fast & Safe Delivery",
-      description: "Doorstep delivery for all your pet's needs.",
+      description: "Doorstep delivery for your pet's needs!",
       number: "3️⃣"
     },
     {
       icon: <Users size={24} />,
       title: "Join the Community",
-      description: "Join our exclusive WhatsApp group for pet parents!",
+      description: "Exclusive WhatsApp group for pet parents!",
       number: "4️⃣"
     }
   ];
@@ -82,9 +82,9 @@ const HowItWorks = () => {
           className="text-center mb-16 animated-element opacity-100"
         >
           <div className="section-label">Process</div>
-          <h2 className="heading-lg mb-4">How It Works</h2>
+          <h2 className="heading-lg mb-4">How It Works?</h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Discover how OSCPETS simplifies pet care and shopping – right at your fingertips!
+            Discover how OSCPETS brings AI-powered pet care to your fingertips
           </p>
         </div>
 

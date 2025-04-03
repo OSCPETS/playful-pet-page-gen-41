@@ -59,12 +59,12 @@ const Hero = () => {
       <div className="container-custom grid md:grid-cols-2 gap-12 lg:gap-20 items-center">
         {/* Hero Text Content */}
         <div ref={textRef} className="animated-element order-2 md:order-1">
-          <div className="section-label">Pet Care Simplified</div>
+          <div className="section-label">Coming Soon</div>
           <h1 className="heading-xl mb-6">
-            Your One-Stop Tech-Enabled Pet Marketplace in India – Shop, Care & Connect! 🐾
+            India's First AI-Powered Pet Marketplace 🐾 – Shop, Learn & Care with AI!
           </h1>
           <p className="text-lg md:text-xl text-gray-600 mb-8 leading-relaxed">
-            Find the best pet products, get expert pet care advice, and connect with trusted vendors – all in one tech-driven platform!
+            Find the best pet products, get expert pet care advice & connect with trusted vendors – All in one place!
           </p>
           
           {/* CTA Buttons */}

@@ -3,10 +3,10 @@ import { useState, useEffect, useRef } from 'react';
 import { Smartphone, Instagram, Gift, Rocket } from 'lucide-react';
 
 const Countdown = () => {
-  const [days, setDays] = useState(29);
-  const [hours, setHours] = useState(23);
-  const [minutes, setMinutes] = useState(59);
-  const [seconds, setSeconds] = useState(48);
+  const [days, setDays] = useState(30);
+  const [hours, setHours] = useState(0);
+  const [minutes, setMinutes] = useState(0);
+  const [seconds, setSeconds] = useState(0);
   
   const sectionRef = useRef<HTMLDivElement>(null);
   const countersRef = useRef<HTMLDivElement>(null);
@@ -98,9 +98,9 @@ const Countdown = () => {
           <div className="inline-block px-3 py-1 text-xs font-medium bg-white/10 text-white rounded-full mb-4">
             Coming Soon
           </div>
-          <h2 className="heading-lg mb-4">OSCPETS Marketplace Launching in 30 Days! ⌛</h2>
+          <h2 className="heading-lg mb-4">OSCPETS Marketplace Launching in 30 Days! ⏳</h2>
           <p className="text-lg text-white/80 max-w-2xl mx-auto">
-            Be among the first to experience India's most innovative pet marketplace!
+            Be among the first to experience India's most innovative pet marketplace
           </p>
         </div>
 
@@ -136,7 +136,7 @@ const Countdown = () => {
           </div>
         </div>
 
-        {/* Early Sign-Up Perks */}
+        {/* Exclusive Offers */}
         <div 
           ref={offersRef}
           className="grid md:grid-cols-2 gap-8 mb-16 animated-element"
@@ -149,7 +149,7 @@ const Countdown = () => {
             <div>
               <h3 className="text-xl font-semibold mb-2">Free Pet Care eBook</h3>
               <p className="text-white/80">
-                The first 500 members get an exclusive pet care eBook – completely FREE!
+                First 500 members get an exclusive pet care eBook completely FREE!
               </p>
             </div>
           </div>
@@ -160,13 +160,13 @@ const Countdown = () => {
             <div>
               <h3 className="text-xl font-semibold mb-2">Early Access</h3>
               <p className="text-white/80">
-                Get early access to AI Pet Assistant before the public launch!
+                Get early access to AI Pet Assistant before public launch!
               </p>
             </div>
           </div>
         </div>
 
-        {/* CTA Button */}
+        {/* CTA Buttons */}
         <div className="flex flex-col sm:flex-row justify-center gap-4 animated-element" style={{ animationDelay: '0.6s' }}>
           <a 
             href="https://chat.whatsapp.com/invite-link" 
@@ -175,7 +175,16 @@ const Countdown = () => {
             className="bg-white text-osc-blue px-6 py-3 rounded-full font-medium shadow-lg hover:shadow-xl transition-all flex items-center justify-center gap-2"
           >
             <Smartphone size={18} />
-            <span>Join the Launch Waitlist Now</span>
+            <span>Join WhatsApp Group for Early Access</span>
+          </a>
+          <a 
+            href="https://instagram.com/oscpets" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="bg-transparent border border-white text-white px-6 py-3 rounded-full font-medium hover:bg-white/10 transition-all flex items-center justify-center gap-2"
+          >
+            <Instagram size={18} />
+            <span>Follow Us for Updates</span>
           </a>
         </div>
       </div>

@@ -1,7 +1,6 @@
 
 import { useState, useRef, useEffect } from 'react';
-import { ChevronDown, ChevronUp, MessageCircle, HelpCircle } from 'lucide-react';
-import { Button } from './ui/button';
+import { ChevronDown, ChevronUp, MessageCircle } from 'lucide-react';
 
 interface FAQItem {
   question: string;
@@ -14,7 +13,6 @@ const FAQ = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const faqRefs = useRef<(HTMLDivElement | null)[]>([]);
   const ctaRef = useRef<HTMLDivElement>(null);
-  const inquiryRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const observerOptions = {
@@ -50,11 +48,6 @@ const FAQ = () => {
       observer.observe(ctaRef.current);
     }
 
-    // Observe inquiry button
-    if (inquiryRef.current) {
-      observer.observe(inquiryRef.current);
-    }
-
     return () => {
       observer.disconnect();
     };
@@ -68,23 +61,23 @@ const FAQ = () => {
   const faqs: FAQItem[] = [
     {
       question: "What makes OSCPETS different?",
-      answer: "Your One-Stop Tech-Enabled Pet Marketplace in India – Shop, Care & Connect! 🐾 Find the best pet products, get expert pet care advice, and connect with trusted vendors – all in one tech-driven platform!"
+      answer: "OSCPETS is India's first AI-powered pet marketplace, combining artificial intelligence with a curated selection of quality pet products. Our AI assistant helps answer pet care questions, recommends products based on your pet's needs, and connects you with a community of pet parents."
     },
     {
       question: "How does the AI assistant work?",
-      answer: "Ask the AI any pet-related question, and it will provide instant, expert-backed advice."
+      answer: "Our AI assistant uses advanced machine learning to provide accurate and helpful information about pet care. It can answer questions about nutrition, behavior, health concerns, and even recommend products based on your pet's specific needs. The more you use it, the better it understands your pet's requirements."
     },
     {
       question: "When is the official launch?",
-      answer: "We're launching in just 60 days! Join our waitlist to be among the first users."
+      answer: "We're launching the full OSCPETS marketplace in 30 days. In the meantime, you can join our WhatsApp community to get early access to our AI assistant and exclusive pre-launch offers."
     },
     {
-      question: "How do I get a free audiobook?",
-      answer: "Just follow OSCPETS, fill in your details, and receive your audiobook through our official email!"
+      question: "How do I get early access?",
+      answer: "Join our WhatsApp community by clicking the 'Join Our Pet Parent Community' button. The first 500 members will receive a free pet care eBook and early access to our AI assistant before the public launch."
     },
     {
       question: "What types of products will be available?",
-      answer: "Our marketplace will feature pet food, grooming supplies, accessories, and much more – all from trusted local vendors."
+      answer: "OSCPETS will offer a wide range of pet products from trusted brands, including food, treats, toys, grooming supplies, health supplements, accessories, and more. All products are vetted for quality to ensure the best for your pets."
     }
   ];
 
@@ -143,26 +136,8 @@ const FAQ = () => {
             className="inline-flex items-center justify-center gap-2 bg-osc-blue text-white px-6 py-3 rounded-full font-medium shadow-lg hover:shadow-xl transition-all"
           >
             <MessageCircle size={20} />
-            <span>Chat with OSCPETS AI Now!</span>
+            <span>Chat with OSCPETS AI now!</span>
           </a>
-        </div>
-
-        {/* Inquiry Button */}
-        <div 
-          ref={inquiryRef}
-          className="text-center mt-8 animated-element"
-          style={{ animationDelay: '0.4s' }}
-        >
-          <Button 
-            className="bg-white text-osc-dark-gray border border-gray-300 hover:bg-gray-100 px-6 py-3 rounded-full font-medium shadow-md hover:shadow-lg transition-all"
-            onClick={() => window.open("mailto:info@oscpets.com", "_blank")}
-          >
-            <HelpCircle size={20} className="mr-2" />
-            <span>I HAVE A QUESTION OR INQUIRY</span>
-          </Button>
-          <p className="text-sm text-gray-600 mt-3">
-            Have more questions? We're here to help!
-          </p>
         </div>
       </div>
     </section>
