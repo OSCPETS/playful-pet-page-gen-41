@@ -1,4 +1,3 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -110,6 +109,64 @@
   }
 
   /* ... keep existing code (timeline, testimonial, and faq related classes) */
+  .timeline {
+    @apply relative;
+  }
+
+  .timeline::before {
+    content: '';
+    @apply absolute left-1/2 transform -translate-x-1/2 bg-gray-300 w-[2px] h-full;
+  }
+
+  .timeline-item {
+    @apply mb-8 relative;
+  }
+
+  .timeline-item::before {
+    content: '';
+    @apply absolute w-3 h-3 bg-osc-blue rounded-full mt-1.5 z-10;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 2px solid white;
+  }
+
+  .timeline-card {
+    @apply glass-card p-4 sm:p-6;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  @screen sm {
+    .timeline-card {
+      margin-left: 5rem;
+      margin-right: 2rem;
+    }
+
+    .timeline-item:nth-child(odd) .timeline-card {
+      margin-left: 2rem;
+      margin-right: 5rem;
+    }
+  }
+
+  .testimonial-card {
+    @apply glass-card p-4 sm:p-6 text-center;
+  }
+
+  .testimonial-avatar {
+    @apply w-20 h-20 rounded-full mx-auto mb-4;
+  }
+
+  .faq-item {
+    @apply mb-4 border-b border-gray-200 pb-4;
+  }
+
+  .faq-question {
+    @apply flex items-center justify-between text-lg font-medium cursor-pointer;
+  }
+
+  .faq-answer {
+    @apply mt-2 text-gray-600;
+  }
 
   .parallax-container {
     @apply relative overflow-hidden;
@@ -149,6 +206,31 @@
   .bg-osc-gray {
     background-color: #f8f9fa;
   }
+
+  /* Chat interface specific styles */
+  .chat-message {
+    @apply max-w-[85%] md:max-w-[75%] p-3 rounded-lg;
+  }
+
+  .chat-message-user {
+    @apply bg-osc-blue text-white ml-auto rounded-tr-none;
+  }
+
+  .chat-message-ai {
+    @apply bg-white border border-gray-200 shadow-sm rounded-tl-none;
+  }
+
+  .chat-avatar {
+    @apply p-2 rounded-full shrink-0;
+  }
+
+  .chat-avatar-ai {
+    @apply bg-osc-pale-blue text-osc-blue;
+  }
+
+  .chat-avatar-user {
+    @apply bg-gray-300 text-gray-700;
+  }
 }
 
 /* Responsive utilities */
@@ -164,5 +246,13 @@
   .no-scrollbar {
     -ms-overflow-style: none;
     scrollbar-width: none;
+  }
+  
+  .responsive-padding {
+    @apply px-4 sm:px-6 md:px-8;
+  }
+  
+  .responsive-container {
+    @apply w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
   }
 }

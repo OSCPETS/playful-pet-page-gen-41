@@ -1,10 +1,12 @@
 
 import { useState, useRef, useEffect } from 'react';
-import { ArrowLeft, Send, Bot, User, Loader2 } from 'lucide-react';
+import { ArrowLeft, Send, Bot, User, Loader2, X, MapPin } from 'lucide-react';
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Badge } from "@/components/ui/badge";
 import { toast } from "@/hooks/use-toast";
+import { Link } from 'react-router-dom';
 
 // Create system prompt based on selected type
 const getSystemPrompt = (type: string): string => {
@@ -40,6 +42,7 @@ const ChatInterface = ({ topicId, onBackToTopics, apiKey, model }: ChatInterface
   const [question, setQuestion] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const [showPuneNotice, setShowPuneNotice] = useState(true);
   
   // Set welcome message on topic selection
   useEffect(() => {
@@ -72,6 +75,10 @@ const ChatInterface = ({ topicId, onBackToTopics, apiKey, model }: ChatInterface
     formatted = formatted.replace(/\n{3,}/g, '\n\n');
     
     return formatted;
+  };
+
+  const closePuneNotice = () => {
+    setShowPuneNotice(false);
   };
   
   const handleSendQuestion = async (e: React.FormEvent) => {
@@ -155,18 +162,46 @@ const ChatInterface = ({ topicId, onBackToTopics, apiKey, model }: ChatInterface
     <div className="flex flex-col h-screen bg-gray-50">
       {/* Header */}
       <div className="bg-white border-b border-gray-200 p-4 flex items-center">
-        <button
-          onClick={onBackToTopics}
-          className="mr-4 text-gray-600 hover:text-gray-900"
-          aria-label="Back to topics"
-        >
-          <ArrowLeft size={20} />
-        </button>
-        <div>
-          <h2 className="font-semibold text-lg">{getTopicTitle(topicId)}</h2>
-          <p className="text-sm text-gray-500">OSCPETS AI Assistant</p>
+        <div className="flex items-center justify-between w-full">
+          <div className="flex items-center gap-2">
+            <button
+              onClick={onBackToTopics}
+              className="text-gray-600 hover:text-gray-900 mr-2"
+              aria-label="Back to topics"
+            >
+              <ArrowLeft size={20} />
+            </button>
+            <div>
+              <h2 className="font-semibold text-lg">{getTopicTitle(topicId)}</h2>
+              <p className="text-sm text-gray-500">OSCPETS AI Assistant</p>
+            </div>
+          </div>
+          <Link 
+            to="/" 
+            className="text-osc-blue hover:text-osc-blue/80 text-sm font-medium"
+          >
+            Back to Website
+          </Link>
         </div>
       </div>
+      
+      {/* Pune Coming Soon Notification */}
+      {showPuneNotice && (
+        <div className="mx-4 mt-4 bg-osc-blue text-white p-3 rounded-lg shadow-md animate-fade-in">
+          <button 
+            onClick={closePuneNotice}
+            className="absolute top-2 right-2 text-white/80 hover:text-white"
+            aria-label="Close notification"
+          >
+            <X size={16} />
+          </button>
+          <div className="flex items-center gap-2 mb-1">
+            <MapPin size={16} />
+            <p className="font-semibold text-sm">Coming Soon in Pune!</p>
+          </div>
+          <p className="text-xs">OSCPETS services will be launching in Pune soon. Stay tuned for updates!</p>
+        </div>
+      )}
       
       {/* Messages */}
       <div className="flex-grow overflow-y-auto p-4 space-y-4">
@@ -174,8 +209,8 @@ const ChatInterface = ({ topicId, onBackToTopics, apiKey, model }: ChatInterface
           <div
             key={index}
             className={cn(
-              "flex items-start gap-3 max-w-[80%]",
-              msg.type === 'user' ? "ml-auto" : ""
+              "flex items-start gap-3",
+              msg.type === 'user' ? "justify-end" : "justify-start"
             )}
           >
             {msg.type === 'ai' && (
@@ -185,7 +220,7 @@ const ChatInterface = ({ topicId, onBackToTopics, apiKey, model }: ChatInterface
             )}
             <div
               className={cn(
-                "p-3 rounded-lg",
+                "p-3 rounded-lg max-w-[75%]",
                 msg.type === 'user' 
                   ? "bg-osc-blue text-white rounded-tr-none" 
                   : "bg-white border border-gray-200 shadow-sm rounded-tl-none"
@@ -228,7 +263,7 @@ const ChatInterface = ({ topicId, onBackToTopics, apiKey, model }: ChatInterface
           <Button
             type="submit"
             disabled={!question.trim() || isLoading}
-            className="bg-osc-blue hover:bg-osc-blue/90"
+            className="bg-osc-blue hover:bg-osc-blue/90 px-4"
           >
             {isLoading ? (
               <Loader2 size={18} className="animate-spin" />
