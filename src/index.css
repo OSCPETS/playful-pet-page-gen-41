@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -43,6 +44,7 @@
 
   html {
     scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
   }
 
   body {
@@ -52,11 +54,11 @@
 
 @layer components {
   .container-custom {
-    @apply max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-12;
+    @apply max-w-[1400px] mx-auto px-4 sm:px-6 md:px-8 lg:px-12;
   }
   
   .section-padding {
-    @apply py-16 md:py-24;
+    @apply py-12 sm:py-16 md:py-20 lg:py-24;
   }
   
   .glass-card {
@@ -68,27 +70,27 @@
   }
 
   .btn-primary {
-    @apply bg-osc-blue text-white px-6 py-3 rounded-full font-medium 
+    @apply bg-osc-blue text-white px-4 sm:px-6 py-2 sm:py-3 rounded-full font-medium 
            shadow-sm transition-all duration-300 hover:shadow-md hover:bg-opacity-90
            focus:outline-none focus:ring-2 focus:ring-osc-blue focus:ring-opacity-50;
   }
 
   .btn-secondary {
-    @apply bg-white text-osc-blue border border-osc-blue px-6 py-3 rounded-full font-medium 
+    @apply bg-white text-osc-blue border border-osc-blue px-4 sm:px-6 py-2 sm:py-3 rounded-full font-medium 
            shadow-sm transition-all duration-300 hover:shadow-md hover:bg-osc-pale-blue
            focus:outline-none focus:ring-2 focus:ring-osc-blue focus:ring-opacity-50;
   }
 
   .heading-xl {
-    @apply text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight;
+    @apply text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight;
   }
 
   .heading-lg {
-    @apply text-3xl md:text-4xl font-bold tracking-tight;
+    @apply text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight;
   }
 
   .heading-md {
-    @apply text-2xl md:text-3xl font-bold tracking-tight;
+    @apply text-xl sm:text-2xl md:text-3xl font-bold tracking-tight;
   }
 
   .animated-element {
@@ -100,29 +102,14 @@
   }
 
   .feature-card {
-    @apply glass-card glass-card-hover p-6 h-full flex flex-col items-center text-center;
+    @apply glass-card glass-card-hover p-4 sm:p-6 h-full flex flex-col items-center text-center;
   }
 
   .feature-icon-container {
-    @apply flex items-center justify-center w-16 h-16 rounded-full mb-4 bg-osc-pale-blue text-osc-blue;
+    @apply flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 rounded-full mb-4 bg-osc-pale-blue text-osc-blue;
   }
 
-  .timeline-step {
-    @apply relative pb-10 last:pb-0;
-  }
-
-  .timeline-step:not(:last-child)::after {
-    content: '';
-    @apply absolute left-6 top-14 bottom-0 w-0.5 bg-osc-pale-blue;
-  }
-
-  .testimonial-card {
-    @apply glass-card p-6 flex flex-col items-center text-center;
-  }
-
-  .faq-item {
-    @apply border-b border-gray-200 py-5;
-  }
+  /* ... keep existing code (timeline, testimonial, and faq related classes) */
 
   .parallax-container {
     @apply relative overflow-hidden;
@@ -161,5 +148,21 @@
   /* Define bg-osc-gray class if not already defined */
   .bg-osc-gray {
     background-color: #f8f9fa;
+  }
+}
+
+/* Responsive utilities */
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
   }
 }

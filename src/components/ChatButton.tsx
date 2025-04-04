@@ -1,15 +1,21 @@
 
-import { MessageSquare } from 'lucide-react';
+import { Bot } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { Badge } from "@/components/ui/badge";
 
 const ChatButton = () => {
   return (
     <Link 
       to="/chat" 
-      className="fixed right-6 bottom-6 bg-osc-blue text-white px-6 py-3 rounded-full shadow-lg hover:bg-osc-blue/90 transition-all z-40 flex items-center gap-2"
+      className="fixed right-6 bottom-6 bg-osc-blue text-white p-3 rounded-full shadow-lg hover:bg-osc-blue/90 transition-all z-40"
+      aria-label="Chat with AI"
     >
-      <MessageSquare size={20} />
-      <span>Chat with OSCPETS AI Now!</span>
+      <div className="relative">
+        <Bot size={24} />
+        <Badge className="absolute -top-2 -right-2 bg-orange-500 text-[10px] px-1 py-0 rounded-full">
+          AI
+        </Badge>
+      </div>
     </Link>
   );
 };
