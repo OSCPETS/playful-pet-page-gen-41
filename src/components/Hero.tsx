@@ -93,8 +93,13 @@ const Hero = () => {
         {/* Hero Image */}
         <div ref={imageRef} className="animated-element order-1 md:order-2 flex justify-center">
           <div className="relative">
-            {/* Glass card moved from bottom to top of the image */}
-            <div className="absolute -top-6 -left-6 glass-card p-4 rounded-xl shadow-lg animate-float" style={{ animationDelay: '1s' }}>
+            <div className="w-64 h-64 md:w-80 md:h-80 bg-osc-pale-blue rounded-full absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 -z-10"></div>
+            <img 
+              src="https://images.unsplash.com/photo-1583337130417-3346a1be7dee?q=80&w=2064" 
+              alt="Happy pet parent using OSCPETS" 
+              className="relative z-10 w-full max-w-md rounded-2xl shadow-lg animate-float"
+            />
+            <div className="absolute -bottom-6 -right-6 glass-card p-4 rounded-xl shadow-lg animate-float" style={{ animationDelay: '1s' }}>
               <div className="flex items-center gap-2">
                 <div className="w-8 h-8 bg-osc-blue rounded-full flex items-center justify-center text-white">
                   AI
@@ -105,13 +110,6 @@ const Hero = () => {
                 </div>
               </div>
             </div>
-            
-            <div className="w-64 h-64 md:w-80 md:h-80 bg-osc-pale-blue rounded-full absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 -z-10"></div>
-            <img 
-              src="https://images.unsplash.com/photo-1583337130417-3346a1be7dee?q=80&w=2064" 
-              alt="Happy pet parent using OSCPETS" 
-              className="relative z-10 w-full max-w-md rounded-2xl shadow-lg animate-float"
-            />
           </div>
         </div>
       </div>
