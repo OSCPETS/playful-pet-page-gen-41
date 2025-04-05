@@ -38,11 +38,7 @@ const Header = () => {
         {/* Logo */}
         <div className="relative z-10">
           <a href="#" className="flex items-center">
-            <img 
-              src="/lovable-uploads/3927147b-bff0-46d6-b1bb-8df967d67e53.png" 
-              alt="OSCPETS Logo" 
-              className="h-10 md:h-12"
-            />
+            <span className="text-2xl font-bold text-osc-blue">OSC<span className="text-osc-dark-gray">PETS</span></span>
           </a>
         </div>
 

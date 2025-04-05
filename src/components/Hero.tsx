@@ -60,7 +60,7 @@ const Hero = () => {
         {/* Hero Text Content */}
         <div ref={textRef} className="animated-element order-2 md:order-1">
           <div className="section-label">Pet Care Simplified</div>
-          <h1 className="heading-xl mb-6 font-helvetica">
+          <h1 className="heading-xl mb-6">
             Your One-Stop Tech-Enabled Pet Marketplace in India – Shop, Care & Connect! 🐾
           </h1>
           <p className="text-lg md:text-xl text-gray-600 mb-8 leading-relaxed">
