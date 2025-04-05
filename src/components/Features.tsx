@@ -108,12 +108,18 @@ const Features = () => {
         <div className="text-center mt-8 mb-6 animated-element" 
             ref={(el) => (featureRefs.current[features.length] = el)}
             style={{ animationDelay: `${0.2 + features.length * 0.1}s` }}>
-          <Button 
-            className="bg-osc-blue hover:bg-osc-blue/90 text-white rounded-full px-6 py-6 text-base"
-            onClick={() => window.open("#", "_blank")}
+          <a 
+            href="https://docs.google.com/forms/d/e/1FAIpQLSfvJgfxXnMjH989BrdP_4Hcbn6Af1yO152U5yPQZnFACDc57g/viewform?usp=dialog"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block"
           >
-            <BookAudio className="mr-2" /> Follow OSCPETS Now - Get Free Pet Care Ebooks
-          </Button>
+            <Button 
+              className="bg-osc-blue hover:bg-osc-blue/90 text-white rounded-full px-6 py-6 text-base"
+            >
+              <BookAudio className="mr-2" /> Follow OSCPETS Now - Get Free Pet Care Ebooks
+            </Button>
+          </a>
           <p className="text-sm text-gray-600 mt-4">
             Fill the form to receive updates when we launch and get free pet care ebooks!
           </p>
