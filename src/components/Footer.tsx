@@ -17,16 +17,13 @@ const Footer = () => {
               Your Tech-Driven Pet Marketplace - Bringing technology and heart together for the best pet parent experience!
             </p>
             <div className="flex space-x-4">
-              <a href="https://instagram.com/oscpets" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-osc-blue transition-colors">
+              <a href="https://www.instagram.com/oscpets/?utm_source=qr#" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-osc-blue transition-colors">
                 <Instagram size={20} />
               </a>
-              <a href="#" className="text-gray-500 hover:text-osc-blue transition-colors">
+              <a href="https://www.facebook.com/share/1HXDZESENU/?" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-osc-blue transition-colors">
                 <Facebook size={20} />
               </a>
-              <a href="#" className="text-gray-500 hover:text-osc-blue transition-colors">
-                <Twitter size={20} />
-              </a>
-              <a href="#" className="text-gray-500 hover:text-osc-blue transition-colors">
+              <a href="https://www.linkedin.com/in/oscpets-com-945290358?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-osc-blue transition-colors">
                 <Linkedin size={20} />
               </a>
             </div>
