@@ -137,7 +137,7 @@ const FAQ = () => {
           className="text-center mt-12 animated-element"
         >
           <a 
-            href="https://chat.whatsapp.com/invite-link" 
+            href="https://docs.google.com/forms/d/e/1FAIpQLSfvJgfxXnMjH989BrdP_4Hcbn6Af1yO152U5yPQZnFACDc57g/viewform?usp=dialog" 
             target="_blank" 
             rel="noopener noreferrer"
             className="inline-flex items-center justify-center gap-2 bg-osc-blue text-white px-6 py-3 rounded-full font-medium shadow-lg hover:shadow-xl transition-all"
@@ -155,7 +155,7 @@ const FAQ = () => {
         >
           <Button 
             className="bg-white text-osc-dark-gray border border-gray-300 hover:bg-gray-100 px-6 py-3 rounded-full font-medium shadow-md hover:shadow-lg transition-all"
-            onClick={() => window.open("mailto:info@oscpets.com", "_blank")}
+            onClick={() => window.open("https://docs.google.com/forms/d/e/1FAIpQLScij74ZRiEvHev-hKKXZ9pA4fnYoW_-XOFZNQ4TtOAfq109vQ/viewform?usp=dialog", "_blank")}
           >
             <HelpCircle size={20} className="mr-2" />
             <span>I HAVE A QUESTION OR INQUIRY</span>

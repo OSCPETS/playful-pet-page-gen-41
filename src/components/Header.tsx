@@ -61,7 +61,7 @@ const Header = () => {
             FAQ
           </a>
           <a 
-            href="https://chat.whatsapp.com/invite-link" 
+            href="https://docs.google.com/forms/d/e/1FAIpQLSfvJgfxXnMjH989BrdP_4Hcbn6Af1yO152U5yPQZnFACDc57g/viewform?usp=dialog" 
             target="_blank" 
             rel="noopener noreferrer"
             className="btn-primary"
@@ -115,7 +115,7 @@ const Header = () => {
             FAQ
           </a>
           <a 
-            href="https://chat.whatsapp.com/invite-link" 
+            href="https://docs.google.com/forms/d/e/1FAIpQLSfvJgfxXnMjH989BrdP_4Hcbn6Af1yO152U5yPQZnFACDc57g/viewform?usp=dialog" 
             target="_blank" 
             rel="noopener noreferrer"
             className="btn-primary mt-6"
