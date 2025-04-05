@@ -69,6 +69,7 @@ const config = {
       fontFamily: {
         sans: ["var(--font-sans)", ...fontFamily.sans],
         nunito: ['Nunito', 'sans-serif'],
+        helvetica: ['"Helvetica Neue"', 'Helvetica', 'Arial', 'sans-serif'],
       },
       keyframes: {
         "accordion-down": {
