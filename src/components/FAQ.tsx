@@ -1,7 +1,7 @@
-
 import { useState, useRef, useEffect } from 'react';
 import { ChevronDown, ChevronUp, MessageCircle, HelpCircle } from 'lucide-react';
 import { Button } from './ui/button';
+import { Link } from 'react-router-dom';
 
 interface FAQItem {
   question: string;
@@ -136,15 +136,13 @@ const FAQ = () => {
           ref={ctaRef}
           className="text-center mt-12 animated-element"
         >
-          <a 
-            href="https://docs.google.com/forms/d/e/1FAIpQLSfvJgfxXnMjH989BrdP_4Hcbn6Af1yO152U5yPQZnFACDc57g/viewform?usp=dialog" 
-            target="_blank" 
-            rel="noopener noreferrer"
+          <Link 
+            to="/chat" 
             className="inline-flex items-center justify-center gap-2 bg-osc-blue text-white px-6 py-3 rounded-full font-medium shadow-lg hover:shadow-xl transition-all"
           >
             <MessageCircle size={20} />
             <span>Chat with OSCPETS AI Now!</span>
-          </a>
+          </Link>
         </div>
 
         {/* Inquiry Button */}
