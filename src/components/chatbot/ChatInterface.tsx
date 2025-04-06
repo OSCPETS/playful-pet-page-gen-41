@@ -120,7 +120,9 @@ const ChatInterface = ({ topicId, onBackToTopics, apiKey, model }: ChatInterface
       });
       
       if (!response.ok) {
-        throw new Error(`API error: ${response.statusText}`);
+        const errorData = await response.json();
+        console.error("API error details:", errorData);
+        throw new Error(`API error: ${response.status} - ${errorData.error?.message || response.statusText}`);
       }
       
       const data = await response.json();
@@ -137,12 +139,12 @@ const ChatInterface = ({ topicId, onBackToTopics, apiKey, model }: ChatInterface
       // Add error message
       setMessages(prev => [...prev, { 
         type: 'ai', 
-        content: "I'm sorry, I encountered an error processing your request. Please try again later." 
+        content: "I'm sorry, I encountered an error processing your request. Please check if the API key is valid and try again." 
       }]);
       
       toast({
         title: "Error",
-        description: "Failed to connect to the AI service. Please try again.",
+        description: error instanceof Error ? error.message : "Failed to connect to the AI service. Please check your API key.",
         variant: "destructive"
       });
     } finally {

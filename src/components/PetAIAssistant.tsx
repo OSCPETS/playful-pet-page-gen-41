@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import { Bot, X, MessageSquare, Apple, Dumbbell, MapPin, Loader2 } from 'lucide-react';
 import { cn } from "@/lib/utils";
@@ -103,7 +104,9 @@ const PetAIAssistant = () => {
       });
       
       if (!response.ok) {
-        throw new Error(`API error: ${response.statusText}`);
+        const errorData = await response.json();
+        console.error("API error details:", errorData);
+        throw new Error(`API error: ${response.status} - ${errorData.error?.message || response.statusText}`);
       }
       
       const data = await response.json();
@@ -117,12 +120,12 @@ const PetAIAssistant = () => {
       // Add error message
       setMessages(prev => [...prev, { 
         type: 'ai', 
-        content: "I'm sorry, I encountered an error processing your request. Please try again later." 
+        content: "I'm sorry, I encountered an error processing your request. Please check if the API key is valid and try again." 
       }]);
       
       toast({
         title: "Error",
-        description: "Failed to connect to the AI service. Please check your API key and try again.",
+        description: error instanceof Error ? error.message : "Failed to connect to the AI service. Please check your API key.",
         variant: "destructive"
       });
     } finally {
