@@ -15,7 +15,7 @@ const assistantTypes = [
 
 // Default model and API key
 const DEFAULT_MODEL = "qwen/qwen2.5-vl-32b-instruct:free";
-const DEFAULT_API_KEY = "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";
+const DEFAULT_API_KEY = "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";
 
 const PetAIAssistant = () => {
   const [isOpen, setIsOpen] = useState(false);

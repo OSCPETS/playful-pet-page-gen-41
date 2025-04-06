@@ -91,7 +91,7 @@ const ChatInterface = ({ topicId, onBackToTopics, apiKey, model }: ChatInterface
         { role: "user", content: question }
       ];
       
-      console.log("Sending request with API key:", apiKey);
+      console.log("Sending request with API key:", apiKey.substring(0, 10) + "...");
       
       const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
         method: "POST",
