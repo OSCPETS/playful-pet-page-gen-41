@@ -7,7 +7,7 @@ import { toast } from "@/hooks/use-toast";
 
 // Default model and API key
 const DEFAULT_MODEL = "qwen/qwen2.5-vl-32b-instruct:free";
-const DEFAULT_API_KEY = "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";
+const DEFAULT_API_KEY = "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";
 
 const ChatbotPage = () => {
   const [selectedTopic, setSelectedTopic] = useState<string | null>(null);

@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Bot, X, MessageSquare, Apple, Dumbbell, MapPin, Loader2 } from 'lucide-react';
 import { cn } from "@/lib/utils";
@@ -16,7 +15,7 @@ const assistantTypes = [
 
 // Default model and API key
 const DEFAULT_MODEL = "qwen/qwen2.5-vl-32b-instruct:free";
-const DEFAULT_API_KEY = "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";
+const DEFAULT_API_KEY = "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";
 
 const PetAIAssistant = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -82,12 +81,16 @@ const PetAIAssistant = () => {
       const systemPrompt = systemPrompts[selectedType || 'vet'];
       
       // Prepare messages for the API request
-      const messages = [
+      const apiMessages = [
         { role: "system", content: systemPrompt },
+        ...messages.map(msg => ({
+          role: msg.type === 'user' ? 'user' : 'assistant',
+          content: msg.content
+        })),
         { role: "user", content: question }
       ];
       
-      // Make API request to OpenRouter with the default model
+      // Make API request to OpenRouter
       const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
         method: "POST",
         headers: {
@@ -98,7 +101,7 @@ const PetAIAssistant = () => {
         },
         body: JSON.stringify({
           model: model,
-          messages: messages,
+          messages: apiMessages,
           max_tokens: 500,
         }),
       });

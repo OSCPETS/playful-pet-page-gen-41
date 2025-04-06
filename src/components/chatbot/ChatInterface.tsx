@@ -1,4 +1,3 @@
-
 import { useState, useRef, useEffect } from 'react';
 import { ArrowLeft, Send, Bot, User, Loader2, X, MapPin } from 'lucide-react';
 import { cn } from "@/lib/utils";
@@ -62,16 +61,12 @@ const ChatInterface = ({ topicId, onBackToTopics, apiKey, model }: ChatInterface
   
   // Format AI response for better readability
   const formatAIResponse = (text: string): string => {
-    // Replace ### markers with proper line breaks
     let formatted = text.replace(/###\s+\d+\./g, '\n\n');
     
-    // Replace ** with bold formatting
     formatted = formatted.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
     
-    // Replace * with bullet points where appropriate
     formatted = formatted.replace(/\n\s*\*\s+/g, '\n• ');
     
-    // Ensure proper paragraph breaks
     formatted = formatted.replace(/\n{3,}/g, '\n\n');
     
     return formatted;
@@ -86,14 +81,12 @@ const ChatInterface = ({ topicId, onBackToTopics, apiKey, model }: ChatInterface
     
     if (!question.trim()) return;
     
-    // Add user message
     setMessages(prev => [...prev, { type: 'user', content: question }]);
     setIsLoading(true);
     
     try {
       const systemPrompt = getSystemPrompt(topicId);
       
-      // Prepare messages for the API request
       const apiMessages = [
         { role: "system", content: systemPrompt },
         ...messages.map(msg => ({
@@ -103,7 +96,6 @@ const ChatInterface = ({ topicId, onBackToTopics, apiKey, model }: ChatInterface
         { role: "user", content: question }
       ];
       
-      // Make API request to OpenRouter
       const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
         method: "POST",
         headers: {
@@ -128,15 +120,12 @@ const ChatInterface = ({ topicId, onBackToTopics, apiKey, model }: ChatInterface
       const data = await response.json();
       let aiResponse = data.choices[0]?.message?.content || "I'm sorry, I couldn't generate a response. Please try again.";
       
-      // Format the AI response for better readability
       aiResponse = formatAIResponse(aiResponse);
       
-      // Add AI response to messages
       setMessages(prev => [...prev, { type: 'ai', content: aiResponse }]);
     } catch (error) {
       console.error("Error calling AI API:", error);
       
-      // Add error message
       setMessages(prev => [...prev, { 
         type: 'ai', 
         content: "I'm sorry, I encountered an error processing your request. Please check if the API key is valid and try again." 
@@ -153,7 +142,6 @@ const ChatInterface = ({ topicId, onBackToTopics, apiKey, model }: ChatInterface
     }
   };
   
-  // Render AI message content with proper formatting
   const renderAIContent = (content: string) => {
     return (
       <div className="whitespace-pre-wrap" dangerouslySetInnerHTML={{ __html: content }} />
@@ -162,7 +150,6 @@ const ChatInterface = ({ topicId, onBackToTopics, apiKey, model }: ChatInterface
   
   return (
     <div className="flex flex-col h-screen bg-gray-50">
-      {/* Header */}
       <div className="bg-white border-b border-gray-200 p-4 flex items-center">
         <div className="flex items-center justify-between w-full">
           <div className="flex items-center gap-2">
@@ -187,7 +174,6 @@ const ChatInterface = ({ topicId, onBackToTopics, apiKey, model }: ChatInterface
         </div>
       </div>
       
-      {/* Pune Coming Soon Notification */}
       {showPuneNotice && (
         <div className="mx-4 mt-4 bg-osc-blue text-white p-3 rounded-lg shadow-md animate-fade-in">
           <button 
@@ -205,7 +191,6 @@ const ChatInterface = ({ topicId, onBackToTopics, apiKey, model }: ChatInterface
         </div>
       )}
       
-      {/* Messages */}
       <div className="flex-grow overflow-y-auto p-4 space-y-4">
         {messages.map((msg, index) => (
           <div
@@ -251,7 +236,6 @@ const ChatInterface = ({ topicId, onBackToTopics, apiKey, model }: ChatInterface
         <div ref={messagesEndRef} />
       </div>
       
-      {/* Input */}
       <div className="border-t border-gray-200 bg-white p-4">
         <form onSubmit={handleSendQuestion} className="flex gap-2">
           <Input
