@@ -7,7 +7,6 @@ import { Badge } from "@/components/ui/badge";
 import { toast } from "@/hooks/use-toast";
 import { Link } from 'react-router-dom';
 
-// Create system prompt based on selected type
 const getSystemPrompt = (type: string): string => {
   const systemPrompts: Record<string, string> = {
     vet: "You are an AI veterinary assistant for OSCPETS, a pet marketplace in India. Provide helpful information about pet health, common medical issues, and when to see a vet. Always clarify you're not a replacement for professional veterinary care. Format your responses in a clear, readable way with proper paragraphs and bullet points (use * for bullet points). Be concise and friendly.",
@@ -18,7 +17,6 @@ const getSystemPrompt = (type: string): string => {
   return systemPrompts[type] || systemPrompts.vet;
 };
 
-// Get topic title
 const getTopicTitle = (type: string): string => {
   const titles: Record<string, string> = {
     vet: "Veterinary Questions",
@@ -43,7 +41,6 @@ const ChatInterface = ({ topicId, onBackToTopics, apiKey, model }: ChatInterface
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const [showPuneNotice, setShowPuneNotice] = useState(true);
   
-  // Set welcome message on topic selection
   useEffect(() => {
     const welcomeMessages: Record<string, string> = {
       vet: "Hello! I'm here to help. Whether you have questions about your pet's health, common medical issues, or when to see a vet, I'm happy to assist. Just keep in mind that I'm not a substitute for professional veterinary advice. How can I help you today? 😊",
@@ -54,12 +51,10 @@ const ChatInterface = ({ topicId, onBackToTopics, apiKey, model }: ChatInterface
     setMessages([{ type: 'ai', content: welcomeMessages[topicId] || "Hello! How can I help you today?" }]);
   }, [topicId]);
   
-  // Auto scroll to bottom on new messages
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages]);
   
-  // Format AI response for better readability
   const formatAIResponse = (text: string): string => {
     let formatted = text.replace(/###\s+\d+\./g, '\n\n');
     
@@ -95,6 +90,8 @@ const ChatInterface = ({ topicId, onBackToTopics, apiKey, model }: ChatInterface
         })),
         { role: "user", content: question }
       ];
+      
+      console.log("Sending request with API key:", apiKey);
       
       const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
         method: "POST",
