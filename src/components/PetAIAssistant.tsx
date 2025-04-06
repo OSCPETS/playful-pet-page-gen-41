@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Bot, X, MessageSquare, Apple, Dumbbell, MapPin, Loader2 } from 'lucide-react';
 import { cn } from "@/lib/utils";
@@ -16,7 +15,7 @@ const assistantTypes = [
 
 // Default model and API key
 const DEFAULT_MODEL = "qwen/qwen2.5-vl-32b-instruct:free";
-const DEFAULT_API_KEY = "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";
+const DEFAULT_API_KEY = "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";
 
 const PetAIAssistant = () => {
   const [isOpen, setIsOpen] = useState(false);
